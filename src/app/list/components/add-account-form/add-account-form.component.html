@@ -1,0 +1,44 @@
+<form [formGroup]="form">
+  <kendo-formfield [style.margin]="5">
+    <kendo-label
+      text="Account Number"
+    ></kendo-label>
+    <kendo-textbox
+      formControlName="accountNumber"
+    ></kendo-textbox>
+    <kendo-formerror>Error: Account number is required</kendo-formerror>
+  </kendo-formfield>
+
+  <div style="display:flex; justify-content: space-between;">
+    <kendo-formfield [style.margin]="5" [style.width]="'48%'">
+      <kendo-label text="Type"></kendo-label>
+      <kendo-dropdownlist  formControlName="type" [data]="accountTypes" textField="value" valueField="key" [valuePrimitive]="true">
+      </kendo-dropdownlist>
+      <kendo-formerror>Error: Account Type is required</kendo-formerror>
+  </kendo-formfield>
+
+   <kendo-formfield [style.margin]="5" [style.width]="'48%'">
+      <kendo-label  text="Status"></kendo-label>
+      <kendo-dropdownlist   formControlName="status" [data]="accountStatuses" textField="value" valueField="key" [valuePrimitive]="true">
+      </kendo-dropdownlist>
+      <kendo-formerror>Error: Account Status is required</kendo-formerror>
+  </kendo-formfield>
+
+
+
+  </div>
+
+  <kendo-formfield [style.margin]="5">
+    <kendo-label  text="Currency"></kendo-label>
+    <kendo-multiselect
+          formControlName="currency"
+          [data]="currencies"
+          textField="value"
+          valueField="key"
+          [valuePrimitive]="true">
+      </kendo-multiselect>
+    </kendo-formfield>
+
+
+  <kendo-button style="margin: 12px 0px; width: 100%;"  (click)="onSubmit()">Add</kendo-button>
+</form>

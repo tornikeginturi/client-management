@@ -1,0 +1,17 @@
+.account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-width: 0px 0px 2px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  .account-info {
+    display: flex;
+    flex-direction: column;
+    .title {
+      margin: 2px 0px;
+    }
+    .value {
+      font-weight: 900;
+    }
+  }
+}

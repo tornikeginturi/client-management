@@ -1,0 +1,34 @@
+
+<ng-container *ngFor="let item of accounts">
+  <div class="account">
+    <div class="account-info">
+      <p class="title">
+        Account Number :
+        <span class="value">
+          {{ item?.accountNumber }}
+        </span>
+      </p>
+      <p class="title">
+        Type :
+        <span class="value">
+          {{ accountTypesMap?.[item?.type]?.value}}
+        </span>
+      </p>
+      <p class="title">
+       Status :
+        <span class="value">
+         {{ accountStatusMap?.[item?.status]?.value}}
+        </span>
+      </p>
+      <p class="title" >
+        Currency :
+        <span class="value" *ngFor="let item of item?.currency">
+          {{ currenciesMap?.[item]?.value}}
+        </span>
+      </p>
+    </div>
+    <kendo-button *ngIf="item?.status !== statusEnum.Inactive" themeColor="primary" (click)="updateItem(item)">
+      Close Account
+    </kendo-button>
+  </div>
+</ng-container>

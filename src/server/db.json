@@ -1,0 +1,340 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "John",
+      "surname": "Doe",
+      "gender": "male",
+      "personalNumber": "12345678901",
+      "mobile": "555123456",
+      "legalAddress": {
+        "country": "usa",
+        "city": "new-york",
+        "address": "123 Main St"
+      },
+      "physicalAddress": {
+        "country": "australia",
+        "city": "sydney",
+        "address": "Main St 123"
+      },
+      "avatar": "../assets/images/female.png",
+      "accountDetails": {
+        "clientId": null,
+        "accountType": null,
+        "accountStatus": null,
+        "currency": null
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jane",
+      "surname": "Smith",
+      "gender": "female",
+      "personalNumber": "98765432109",
+      "mobile": "555987654",
+      "legalAddress": {
+        "country": "canada",
+        "city": "toronto",
+        "address": "456 Oak St"
+      },
+      "physicalAddress": {
+        "country": "canada",
+        "city": "toronto",
+        "address": "456 Oak St"
+      },
+      "avatar": "../assets/images/female.png"
+    },
+    {
+      "id": 3,
+      "name": "Alice",
+      "surname": "Johnson",
+      "gender": "female",
+      "personalNumber": "11223344556",
+      "mobile": "555333444",
+      "legalAddress": {
+        "country": "uk",
+        "city": "london",
+        "address": "789 Park Ave"
+      },
+      "physicalAddress": {
+        "country": "uk",
+        "city": "london",
+        "address": "789 Park Ave"
+      },
+      "avatar": "../assets/images/female.png"
+    },
+    {
+      "id": 4,
+      "name": "Bob",
+      "surname": "Miller",
+      "gender": "male",
+      "personalNumber": "99887766554",
+      "mobile": "555888999",
+      "legalAddress": {
+        "country": "australia",
+        "city": "sydney",
+        "address": "101 Beach Rd"
+      },
+      "physicalAddress": {
+        "country": "australia",
+        "city": "sydney",
+        "address": "101 Beach Rd"
+      },
+      "avatar": "../assets/images/male.png"
+    },
+    {
+      "id": 5,
+      "name": "Eva",
+      "surname": "Lee",
+      "gender": "female",
+      "personalNumber": "11223344556",
+      "mobile": "555555555",
+      "legalAddress": {
+        "country": "germany",
+        "city": "berlin",
+        "address": "202 Forest St"
+      },
+      "physicalAddress": {
+        "country": "germany",
+        "city": "berlin",
+        "address": "202 Forest St"
+      },
+      "avatar": "../assets/images/female.png"
+    },
+    {
+      "name": "fsfsdfsds",
+      "surname": "sfsdfsdfsd",
+      "mobile": "5444544454",
+      "gender": "male",
+      "personalNumber": "3423423423423",
+      "legalAddress": {
+        "country": "germany",
+        "city": "new-york",
+        "address": "sfsfsdfsdfsd"
+      },
+      "physicalAddress": {
+        "country": "germany",
+        "city": "toronto",
+        "address": "sfsdfsdfsd"
+      },
+      "id": 6,
+      "avatar": "../assets/images/female.png"
+    }
+  ],
+  "accounts": [
+    {
+      "accountNumber": "123456789",
+      "type": "current",
+      "currency": [
+        "usd"
+      ],
+      "status": "inactive",
+      "id": 101,
+      "clientId": 3
+    },
+    {
+      "accountNumber": "qwertyu",
+      "type": "savings",
+      "currency": [
+        "usd",
+        "eur",
+        "gel"
+      ],
+      "status": "inactive",
+      "id": 102,
+      "clientId": 3
+    },
+    {
+      "accountNumber": "123456",
+      "type": "deposit",
+      "currency": [
+        "gel"
+      ],
+      "status": "inactive",
+      "id": 103,
+      "clientId": 3
+    },
+    {
+      "accountNumber": "123243233423423423423423",
+      "type": "current",
+      "currency": [
+        "eur"
+      ],
+      "status": "inactive",
+      "id": 104,
+      "clientId": 3
+    },
+    {
+      "accountNumber": "1",
+      "type": "current",
+      "currency": [
+        "usd"
+      ],
+      "status": "inactive",
+      "id": 105,
+      "clientId": 1
+    },
+    {
+      "accountNumber": "2",
+      "type": "savings",
+      "currency": [
+        "eur"
+      ],
+      "status": "inactive",
+      "id": 106,
+      "clientId": 1
+    },
+    {
+      "accountNumber": "3",
+      "type": "deposit",
+      "currency": [
+        "gel"
+      ],
+      "status": "inactive",
+      "id": 107,
+      "clientId": 1
+    },
+    {
+      "accountNumber": "4",
+      "type": "current",
+      "currency": [
+        "eur"
+      ],
+      "status": "inactive",
+      "id": 108,
+      "clientId": 1
+    },
+    {
+      "accountNumber": "99999999",
+      "type": "current",
+      "currency": [
+        "eur"
+      ],
+      "status": "inactive",
+      "id": 109,
+      "clientId": 3
+    },
+    {
+      "accountNumber": "123456789",
+      "type": "current",
+      "currency": [
+        "usd"
+      ],
+      "status": "active",
+      "id": 111,
+      "clientId": 2
+    },
+    {
+      "accountNumber": "123456789",
+      "type": "savings",
+      "currency": [
+        "eur"
+      ],
+      "status": "active",
+      "id": 112,
+      "clientId": 2
+    },
+    {
+      "accountNumber": "123456789",
+      "type": "deposit",
+      "currency": [
+        "gel"
+      ],
+      "status": "active",
+      "id": 113,
+      "clientId": 2
+    }
+  ],
+  "currencies": [
+    {
+      "key": "usd",
+      "value": "USD"
+    },
+    {
+      "key": "eur",
+      "value": "EUR"
+    },
+    {
+      "key": "gel",
+      "value": "GEL"
+    }
+  ],
+  "countries": [
+    {
+      "value": "Germany",
+      "key": "germany"
+    },
+    {
+      "value": "Australia",
+      "key": "australia"
+    },
+    {
+      "value": "UK",
+      "key": "uk"
+    },
+    {
+      "value": "USA",
+      "key": "usa"
+    },
+    {
+      "value": "Canada",
+      "key": "canada"
+    }
+  ],
+  "accountStatuses": [
+    {
+      "key": "active",
+      "value": "Active"
+    },
+    {
+      "key": "inactive",
+      "value": "Inactive"
+    }
+  ],
+  "accountTypes": [
+    {
+      "key": "current",
+      "value": "Current"
+    },
+    {
+      "key": "savings",
+      "value": "Savings"
+    },
+    {
+      "key": "deposit",
+      "value": "Deposit"
+    }
+  ],
+  "genders": [
+    {
+      "key": "male",
+      "text": "Male"
+    },
+    {
+      "key": "female",
+      "text": "Female"
+    }
+  ],
+  "cities": [
+    {
+      "key": "new-york",
+      "value": "New York"
+    },
+    {
+      "key": "toronto",
+      "value": "Toronto"
+    },
+    {
+      "key": "london",
+      "value": "London"
+    },
+    {
+      "key": "sydney",
+      "value": "Sydney"
+    },
+    {
+      "key": "berlin",
+      "value": "Berlin"
+    }
+  ]
+}

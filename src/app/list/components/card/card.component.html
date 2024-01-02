@@ -1,0 +1,158 @@
+  <form class="k-form k-form-md" [formGroup]="form" style="padding: 5px;">
+    <fieldset class="k-form-fieldset">
+      <legend class="k-form-legend">Client Details</legend>
+      <kendo-formfield>
+        <kendo-label
+          [for]="'name'"
+          text="First Name"
+        ></kendo-label>
+        <kendo-textbox
+          formControlName="name"
+        ></kendo-textbox>
+        <kendo-formerror *ngIf="form.controls.name.errors?.['required']">Error: First name is required</kendo-formerror>
+        <kendo-formerror *ngIf="form.controls.name.errors?.['minlength']">Error: First name must be between 2 and 50 characters</kendo-formerror>
+        <kendo-formerror *ngIf="form.controls.name.errors?.['pattern']" >Error: First name should only contain english or georgian characters.</kendo-formerror>
+      </kendo-formfield>
+
+      <kendo-formfield>
+        <kendo-label
+          [for]="'surname'"
+          text="Last Name"
+        ></kendo-label>
+        <kendo-textbox
+          formControlName="surname"
+        ></kendo-textbox>
+
+        <kendo-formerror *ngIf="form.controls.surname.errors?.['required']">Error: Last name  is required</kendo-formerror>
+        <kendo-formerror *ngIf="form.controls.surname.errors?.['minlength']">Error: Last name surname must be between 2 and 50 characters</kendo-formerror>
+        <kendo-formerror *ngIf="form.controls.surname.errors?.['pattern']" >Error: Last Name should only contain english or georgian characters.</kendo-formerror>
+      </kendo-formfield>
+
+      <kendo-formfield>
+        <kendo-label
+          [for]="'personalNumber'"
+          text="Personal Number"
+        ></kendo-label>
+        <kendo-textbox
+          formControlName="personalNumber"
+
+        ></kendo-textbox>
+        <kendo-formerror *ngIf="form.controls.personalNumber.errors?.['required']">Error: Personal number is required</kendo-formerror>
+        <kendo-formerror *ngIf="form.controls.personalNumber.errors?.['minlength']">Error: Personal number must be 11 characters</kendo-formerror>
+      </kendo-formfield>
+
+      <kendo-formfield>
+        <kendo-label [for]="'gender'" text="Gender"></kendo-label>
+        <kendo-dropdownlist [data]="genders" formControlName="gender" textField="text" valueField="key" [valuePrimitive]="true">
+        </kendo-dropdownlist>
+      </kendo-formfield>
+
+      <kendo-formfield>
+        <kendo-label
+          [for]="'mobile'"
+          text="Mobile"
+        ></kendo-label>
+        <kendo-textbox
+          formControlName="mobile"
+
+        ></kendo-textbox>
+        <kendo-formerror *ngIf="form.controls.mobile.errors?.['required']">Error: number is required</kendo-formerror>
+        <kendo-formerror *ngIf="form.controls.mobile.errors?.['minlength']">Error: number must be start 5</kendo-formerror>
+        <kendo-formerror *ngIf="form.controls.mobile.errors?.['pattern']">Error: number must be 9 characters</kendo-formerror>
+      </kendo-formfield>
+
+      <ng-container *ngIf="client?.id">
+          <legend class="form-legend k-form-legend">Account Info
+           <div>
+            <kendo-button (click)="showAddAccountForm()" >
+              <kendo-icon [name]="showAddAccountFormDetails ? 'minus' : 'plus'"></kendo-icon>
+            </kendo-button>
+            <kendo-button (click)="showAccountInfo()" style="margin-left: 5px;" [disabled]="accounts?.length === 0">
+              <kendo-icon [name]="showAccountInfoDetails ? 'arrow-up' : 'arrow-down'"></kendo-icon>
+            </kendo-button>
+           </div>
+          </legend>
+
+          <div [@expand]="showAccountInfoDetails ? 'expanded' : 'collapsed'">
+            <app-client-account-info [accounts]="accounts" [accountStatuses]="accountStatuses" [accountTypes]="accountTypes" [currencies]="currencies" (updateItemEvent)="onUpdateItemEvent($event)"></app-client-account-info>
+          </div>
+
+          <div [@expand]="showAddAccountFormDetails ? 'expanded' : 'collapsed'">
+            <app-add-account-form [clientId]="client?.id" [accountStatuses]="accountStatuses" [accountTypes]="accountTypes" [currencies]="currencies" (addAccountEvent)="onAddAccountEvent($event)"></app-add-account-form>
+          </div>
+      </ng-container>
+
+     <ng-container formGroupName="physicalAddress">
+      <legend class="form-legend k-form-legend">Physical Address
+      <kendo-button (click)="showPhysicalAddress()">
+        <kendo-icon [name]="showPhysicalAddressDetails ? 'arrow-up' : 'arrow-down'"></kendo-icon>
+      </kendo-button>
+      </legend>
+      <div [@expand]="showPhysicalAddressDetails ? 'expanded' : 'collapsed'">
+        <div style="display: flex; justify-content: space-between;">
+          <kendo-formfield [style.margin]="0" [style.width]="'48%'">
+            <kendo-label [for]="'country'" text="Country"></kendo-label>
+            <kendo-dropdownlist formControlName="country" [data]="countries" textField="value" valueField="key" [valuePrimitive]="true">
+            </kendo-dropdownlist>
+            <kendo-formerror *ngIf="form.controls.physicalAddress.get('country').errors?.['required']">Error: country is required</kendo-formerror>
+          </kendo-formfield>
+
+          <kendo-formfield [style.margin]="0" [style.width]="'48%'">
+            <kendo-label [for]="'city'" text="City"></kendo-label>
+            <kendo-dropdownlist formControlName="city" [data]="cities" textField="value" valueField="key" [valuePrimitive]="true">
+            </kendo-dropdownlist>
+            <kendo-formerror *ngIf="form.controls.physicalAddress.get('city').errors?.['required']">Error: city is required</kendo-formerror>
+          </kendo-formfield>
+        </div>
+
+        <kendo-formfield>
+          <kendo-label [for]="'address'" text="Address"></kendo-label>
+          <kendo-textbox kendoTextBox formControlName="address"></kendo-textbox>
+          <kendo-formerror *ngIf="form.controls.physicalAddress.get('address').errors?.['required']">Error: address is required</kendo-formerror>
+        </kendo-formfield>
+      </div>
+     </ng-container>
+
+    <ng-container formGroupName="legalAddress">
+      <legend class="form-legend k-form-legend">Legal Address
+        <kendo-button (click)="showLegalAddress()" >
+        <kendo-icon [name]="showLegalAddressDetails ? 'arrow-up' : 'arrow-down'" ></kendo-icon>
+
+        </kendo-button>
+      </legend>
+
+      <div [@expand]="showLegalAddressDetails ? 'expanded' : 'collapsed'">
+        <div style="display: flex; justify-content: space-between;">
+          <kendo-formfield [style.margin]="0" [style.width]="'48%'">
+            <kendo-label [for]="'country'" text="Country"></kendo-label>
+            <kendo-dropdownlist formControlName="country" [data]="countries" textField="value" valueField="key" [valuePrimitive]="true">
+            </kendo-dropdownlist>
+            <kendo-formerror *ngIf="form.controls.physicalAddress.get('country').errors?.['required']">Error: country is required</kendo-formerror>
+          </kendo-formfield>
+
+          <kendo-formfield [style.margin]="0" [style.width]="'48%'">
+            <kendo-label [for]="'city'" text="City"></kendo-label>
+            <kendo-dropdownlist formControlName="city" [data]="cities" textField="value" valueField="key" [valuePrimitive]="true">
+            </kendo-dropdownlist>
+            <kendo-formerror *ngIf="form.controls.physicalAddress.get('city').errors?.['required']">Error: city is required</kendo-formerror>
+          </kendo-formfield>
+        </div>
+
+        <kendo-formfield>
+          <kendo-label [for]="'address'" text="Address"></kendo-label>
+          <kendo-textbox kendoTextBox formControlName="address"></kendo-textbox>
+          <kendo-formerror *ngIf="form.controls.legalAddress.get('address').errors?.['required']">Error: address is required</kendo-formerror>
+        </kendo-formfield>
+      </div>
+    </ng-container>
+
+
+    </fieldset>
+    <div class="k-form-buttons actionBtn">
+      <button kendoButton (click)="closeForm()" themeColor="base">Close</button>
+      <button kendoButton themeColor="tertiary" (click)="submitForm()">
+        Save
+      </button>
+    </div>
+</form>
+

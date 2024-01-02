@@ -1,0 +1,140 @@
+<kendo-drawer-container>
+    <kendo-drawer #drawer mode="push"  [expanded]="(selectedClientId$ | async) === 0 || !!(selectedClientId$ | async)" [width]="400">
+      <ng-template kendoDrawerTemplate>
+       <app-card
+
+       [client]="selectedClient$ | async"
+       [genders]="genders$ | async"
+       [cities]="cities$ | async"
+       [accountTypes]="accountTypes$ | async"
+       [accountStatuses]="accountStatuses$ | async"
+       [currencies]="currencies$ | async"
+       [countries]="countries$ | async"
+       [accounts]="clientAccounts$ | async"
+       (closeDrawerEvent)="onCloseDrawerEvent()"
+       (submitFormEvent)="onSubmitFormEvent($event)"
+       (addAccountEvent)="onAddAccountEvent($event)"
+       (updateAccountEvent)="onUpdateAccountEvent($event)"
+       >
+      </app-card>
+      </ng-template>
+    </kendo-drawer>
+  <kendo-drawer-content>
+  <kendo-grid
+  [data]="clients$ | async"
+  [sortable]="true"
+  (sortChange)="sortChange($event)"
+  [pageable]="true"
+  [loading]="loading$ | async"
+  (pageChange)="pageChange($event)"
+  [pageSize]="state?.take"
+  [skip]="state?.skip"
+  [columnMenu]="{ filter: false,columnChooser:false }"
+>
+<ng-template kendoGridToolbarTemplate>
+  <kendo-textbox
+    [style.width.px]="300"
+    [value]="filterOptions?.query"
+    placeholder="Search in all columns"
+    (valueChange)="onFilter($event)"
+  ></kendo-textbox>
+
+  <kendo-grid-spacer></kendo-grid-spacer>
+  <button kendoButton  (click)="addNewClient()">
+    Add New Client
+  </button>
+</ng-template>
+<kendo-grid-column title="Avatar" >
+  <ng-template kendoGridCellTemplate let-dataItem>
+    <img [src]="dataItem.avatar" alt="Image" style="width: 50px; height: 50px;" />
+  </ng-template>
+</kendo-grid-column>
+<kendo-grid-column
+        field="id"
+        title="ID"
+      ></kendo-grid-column>
+      <kendo-grid-column
+      field="personalNumber"
+      title="PID"
+    ></kendo-grid-column>
+<kendo-grid-column
+        field="name"
+        title="First Name"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="surname"
+        title="Last Name"
+      ></kendo-grid-column>
+      <kendo-grid-column
+      [width]="120"
+        field="gender"
+        title="Gender"
+      ></kendo-grid-column>
+
+      <kendo-grid-column
+        field="mobile"
+        title="Mobile"
+      ></kendo-grid-column>
+
+      <kendo-grid-column-group title="Physical Address" >
+        <kendo-grid-column title="Country" >
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span>{{dataItem.physicalAddress.country}}</span>
+
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column title="City" >
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span>{{dataItem.physicalAddress.city}}</span>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column title="Address" >
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span>{{dataItem.physicalAddress.address}}</span>
+
+          </ng-template>
+        </kendo-grid-column>
+      </kendo-grid-column-group>
+
+      <kendo-grid-column-group title="Actual Address" >
+        <kendo-grid-column title="Country" >
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span>{{dataItem.legalAddress.country}}</span>
+
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column title="City" >
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span>{{dataItem.legalAddress.city}}</span>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column title="Address" >
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span>{{dataItem.legalAddress.address}}</span>
+
+          </ng-template>
+        </kendo-grid-column>
+      </kendo-grid-column-group>
+
+      <kendo-grid-column [width]="80">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <kendo-button themeColor="warning" (click)="editItem(dataItem)">
+            Edit
+          </kendo-button>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column  [width]="90">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <kendo-button themeColor="primary" (click)="removeItem(dataItem)">
+            Remove
+          </kendo-button>
+        </ng-template>
+      </kendo-grid-column>
+</kendo-grid>
+  </kendo-drawer-content>
+</kendo-drawer-container>
+<div kendoDialogContainer></div>
